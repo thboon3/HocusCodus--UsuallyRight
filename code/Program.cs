@@ -6,15 +6,12 @@ namespace HocusCodus
 {
 	internal class Program
 	{
-		static List<String> rCijfers = new List<string>();
 		static async Task Main(string[] args)
 		{
-			await getResponse();
-			string end = IntToRoman(RomanToInt(rCijfers));
-			Console.WriteLine(end);
+			await getEverything();
 		}
 
-		public static int RomanToInt(List<String> lijst)
+		public static int RomanToIntSum(List<String> lijst)
 		{
 			int som = 0;
 			Dictionary<char, int> romanNumbersDictionary = new() {
@@ -87,7 +84,19 @@ namespace HocusCodus
 			}
 			return romanResult;
 		}
-		static async Task getResponse()
+
+		public static String GetAnswer(List<String> lijst)
+		{
+			List<String> rCijfers = new List<string>();
+			foreach (String item in lijst)
+			{
+				rCijfers.Add(item);
+			}
+			int num = RomanToIntSum(rCijfers);
+			string answer = IntToRoman(num);
+			return answer;
+		}
+		static async Task getEverything()
 		{
 			// Swagger
 			// https://app-htf-2022.azurewebsites.net/swagger/index.html
@@ -118,10 +127,39 @@ namespace HocusCodus
 			// We doen de GET request en wachten op de het antwoord
 			// De response die we verwachten is een lijst van getallen dus gebruiken we List<int>
 			var sampleGetResponse = await client.GetFromJsonAsync<List<string>>(sampleUrl);
-			foreach (String item in sampleGetResponse)
-			{
-				rCijfers.Add(item);
-			}
+
+			var sampleAnswer = GetAnswer(sampleGetResponse);
+
+			// We sturen het antwoord met een POST request
+			// Het antwoord dat we moeten versturen is een getal dus gebruiken we int
+			// De response die we krijgen zal ons zeggen of ons antwoord juist was
+			var samplePostResponse = await client.PostAsJsonAsync<String>(sampleUrl, sampleAnswer);
+
+			// Om te zien of ons antwoord juist was moeten we de response uitlezen
+			// Een 200 status code betekent dus niet dat je antwoord juist was!
+			var samplePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
+
+			Console.WriteLine(samplePostResponseValue);
+
+			// De url om de puzzle challenge data op te halen
+			var puzzleUrl = "api/path/1/easy/Puzzle";
+			// We doen de GET request en wachten op de het antwoord
+			// De response die we verwachten is een lijst van getallen dus gebruiken we List<int>
+			var puzzleGetResponse = await client.GetFromJsonAsync<List<String>>(puzzleUrl);
+			Console.WriteLine(puzzleGetResponse);
+			// Je zoekt het antwoord
+			var puzzleAnswer = GetAnswer(puzzleGetResponse);
+
+			// We sturen het antwoord met een POST request
+			// Het antwoord dat we moeten versturen is een getal dus gebruiken we int
+			// De response die we krijgen zal ons zeggen of ons antwoord juist was
+			var puzzlePostResponse = await client.PostAsJsonAsync<String>(puzzleUrl, puzzleAnswer);
+
+			// Om te zien of ons antwoord juist was moeten we de response uitlezen
+			// Een 200 status code betekent dus niet dat je antwoord juist was!
+			var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
+
+			Console.WriteLine(puzzlePostResponseValue);
 		}
 	}
 }
