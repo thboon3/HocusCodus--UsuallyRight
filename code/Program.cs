@@ -125,7 +125,7 @@ namespace HocusCodus
 			var sampleUrl = "api/path/1/easy/Sample";
 
 			// We doen de GET request en wachten op de het antwoord
-			// De response die we verwachten is een lijst van getallen dus gebruiken we List<int>
+			// De response die we verwachten is een lijst van Strings dus gebruiken we List<String>
 			var sampleGetResponse = await client.GetFromJsonAsync<List<string>>(sampleUrl);
 
 			var sampleAnswer = GetAnswer(sampleGetResponse);
@@ -144,7 +144,7 @@ namespace HocusCodus
 			// De url om de puzzle challenge data op te halen
 			var puzzleUrl = "api/path/1/easy/Puzzle";
 			// We doen de GET request en wachten op de het antwoord
-			// De response die we verwachten is een lijst van getallen dus gebruiken we List<int>
+			// De response die we verwachten is een lijst van strings dus gebruiken we List<String>
 			var puzzleGetResponse = await client.GetFromJsonAsync<List<String>>(puzzleUrl);
 			Console.WriteLine(puzzleGetResponse);
 			// Je zoekt het antwoord
