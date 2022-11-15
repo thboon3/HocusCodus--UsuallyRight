@@ -1,17 +1,94 @@
-﻿using System;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace HocusCodus // Note: actual namespace depends on the project name.
+
+namespace HocusCodus
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		static List<String> rCijfers = new List<string>();
+		static async Task Main(string[] args)
 		{
-			getResponse();
+			await getResponse();
+			string end = IntToRoman(RomanToInt(rCijfers));
+			Console.WriteLine(end);
 		}
 
-		static async void getResponse() {
+		public static int RomanToInt(List<String> lijst)
+		{
+			int som = 0;
+			Dictionary<char, int> romanNumbersDictionary = new() {
+				{ 'I', 1 },
+				{ 'V', 5 },
+				{ 'X', 10 },
+				{ 'L', 50 },
+				{ 'C', 100 },
+				{ 'D', 500 },
+				{ 'M', 1000 }
+			};
+			foreach (string s in lijst)
+			{
+				for (int i = 0; i < s.Length; i++)
+				{
+					char currentRomanChar = s[i];
+					romanNumbersDictionary.TryGetValue(currentRomanChar, out int num);
+					if (i + 1 < s.Length && romanNumbersDictionary[s[i + 1]] > romanNumbersDictionary[currentRomanChar])
+					{ som -= num; }
+					else { som += num; }
+				}
+			}
+			return som;
+		}
+		public static string IntToRoman(int num)
+		{
+			string romanResult = string.Empty;
+			string[] romanLetters = {
+				"M",
+				"CM",
+				"D",
+				"CD",
+				"C",
+				"XC",
+				"L",
+				"XL",
+				"X",
+				"IX",
+				"V",
+				"IV",
+				"I"
+			};
+			int[] numbers = {
+			1000,
+			900,
+			500,
+			400,
+			100,
+			90,
+			50,
+			40,
+			10,
+			9,
+			5,
+			4,
+			1
+			};
+			int i = 0;
+			while (num != 0)
+			{
+				if (num >= numbers[i])
+				{
+					num -= numbers[i];
+					romanResult += romanLetters[i];
+				}
+				else
+				{
+					i++;
+				}
+			}
+			return romanResult;
+		}
+		static async Task getResponse()
+		{
 			// Swagger
 			// https://app-htf-2022.azurewebsites.net/swagger/index.html
 			// De httpclient die we gebruiken om http calls te maken
@@ -36,13 +113,15 @@ namespace HocusCodus // Note: actual namespace depends on the project name.
 			var startResponse = await client.GetAsync(startUrl);
 
 			// De url om de sample challenge data op te halen
-			var sampleUrl = "api/path/1/easy/Puzzle";
+			var sampleUrl = "api/path/1/easy/Sample";
 
 			// We doen de GET request en wachten op de het antwoord
 			// De response die we verwachten is een lijst van getallen dus gebruiken we List<int>
-			var sampleGetResponse = await client.GetFromJsonAsync<List<int>>(sampleUrl);
-
-			Console.WriteLine(sampleGetResponse);
+			var sampleGetResponse = await client.GetFromJsonAsync<List<string>>(sampleUrl);
+			foreach (String item in sampleGetResponse)
+			{
+				rCijfers.Add(item);
+			}
 		}
 	}
 }
