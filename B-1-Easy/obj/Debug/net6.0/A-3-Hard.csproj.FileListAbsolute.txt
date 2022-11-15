@@ -1,0 +1,15 @@
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.csproj.AssemblyReference.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.GeneratedMSBuildEditorConfig.editorconfig
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.AssemblyInfoInputs.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.AssemblyInfo.cs
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.csproj.CoreCompileInputs.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/bin/Debug/net6.0/A-3-Hard
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/bin/Debug/net6.0/A-3-Hard.deps.json
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/bin/Debug/net6.0/A-3-Hard.runtimeconfig.json
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/bin/Debug/net6.0/A-3-Hard.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/bin/Debug/net6.0/ref/A-3-Hard.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/bin/Debug/net6.0/A-3-Hard.pdb
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/ref/A-3-Hard.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.pdb
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/Debug/net6.0/A-3-Hard.genruntimeconfig.cache

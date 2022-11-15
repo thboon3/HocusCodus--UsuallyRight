@@ -17,29 +17,41 @@ namespace HocusCodusA2
 			{
 				Wizard firstWizardA = battleSimObject.TeamA.First();
 				Wizard firstWizardB = battleSimObject.TeamB.First();
-				if (firstWizardA.Speed > firstWizardB.Speed)
+				do
 				{
-					firstWizardB.Health -= firstWizardA.Strength;
-					if (firstWizardB.Health <= 0)
+					if (firstWizardA.Speed > firstWizardB.Speed)
 					{
-						battleSimObject.TeamB.RemoveAt(firstWizardB);
-					} else {
-						firstWizardA.Health -= firstWizardB.Strength;
-					}
-				} else {
-					firstWizardA.Health -= firstWizardB.Strength;
-					if (firstWizardA.Health <= 0)
-					{
-						battleSimObject.TeamA.Remove(firstWizardA);
-					} else {
 						firstWizardB.Health -= firstWizardA.Strength;
+						if (firstWizardB.Health > 0)
+						{
+							firstWizardA.Health -= firstWizardB.Strength;
+						}
 					}
+					else
+					{
+						firstWizardA.Health -= firstWizardB.Strength;
+						if (firstWizardA.Health > 0)
+						{
+							firstWizardB.Health -= firstWizardA.Strength;
+						}
+					}
+				} while (firstWizardA.Health > 0 && firstWizardB.Health > 0);
+				if (firstWizardA.Health <= 0)
+				{
+					battleSimObject.TeamA.Remove(firstWizardA);
 				}
-			} while (battleSimObject.TeamA.Count != 0 && battleSimObject.TeamB.Count != 0 );
-			if (battleSimObject.TeamA.Any()) {
-				return(nameof(battleSimObject.TeamA));
-			} else {
-				return(nameof(battleSimObject.TeamB));
+				else
+				{
+					battleSimObject.TeamB.Remove(firstWizardB);
+				}
+			} while (battleSimObject.TeamA.Count != 0 && battleSimObject.TeamB.Count != 0);
+			if (battleSimObject.TeamA.Any())
+			{
+				return (nameof(battleSimObject.TeamA));
+			}
+			else
+			{
+				return (nameof(battleSimObject.TeamB));
 			}
 			// var any = battleSimObject.TeamA.Any(wizard => wizard.Health > 10);
 
@@ -90,22 +102,22 @@ namespace HocusCodusA2
 
 			Console.WriteLine(samplePostResponseValue);
 
-			// // De url om de puzzle challenge data op te halen
+			// De url om de puzzle challenge data op te halen
 			var puzzleUrl = "api/path/1/medium/Puzzle";
-			// // We doen de GET request en wachten op de het antwoord
-			// // De response die we verwachten is een lijst van strings dus gebruiken we List<String>
+			// We doen de GET request en wachten op de het antwoord
+			// De response die we verwachten is een lijst van strings dus gebruiken we List<String>
 			var puzzleGetResponse = await client.GetFromJsonAsync<BattleSimObject>(puzzleUrl);
 			// Console.WriteLine(puzzleGetResponse);
-			// // Je zoekt het antwoord
+			// Je zoekt het antwoord
 			var puzzleAnswer = GetAnswer(puzzleGetResponse);
 
-			// // We sturen het antwoord met een POST request
-			// // Het antwoord dat we moeten versturen is een getal dus gebruiken we int
-			// // De response die we krijgen zal ons zeggen of ons antwoord juist was
+			// We sturen het antwoord met een POST request
+			// Het antwoord dat we moeten versturen is een getal dus gebruiken we int
+			// De response die we krijgen zal ons zeggen of ons antwoord juist was
 			var puzzlePostResponse = await client.PostAsJsonAsync<string>(puzzleUrl, puzzleAnswer);
 
-			// // Om te zien of ons antwoord juist was moeten we de response uitlezen
-			// // Een 200 status code betekent dus niet dat je antwoord juist was!
+			// Om te zien of ons antwoord juist was moeten we de response uitlezen
+			// Een 200 status code betekent dus niet dat je antwoord juist was!
 			var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
 
 			Console.WriteLine(puzzlePostResponseValue);

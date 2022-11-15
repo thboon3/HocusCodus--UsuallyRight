@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/A-3-Hard.csproj": {}
+  },
+  "projects": {
+    "/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/A-3-Hard.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/A-3-Hard.csproj",
+        "projectName": "A-3-Hard",
+        "projectPath": "/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/A-3-Hard.csproj",
+        "packagesPath": "/home/lucasmiserez/.nuget/packages/",
+        "outputPath": "/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/B-1-Easy/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/lucasmiserez/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.109/sdk/6.0.109/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
