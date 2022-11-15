@@ -11,14 +11,39 @@ namespace HocusCodusA2
 			await getEverything();
 		}
 
-		public static String GetAnswer(BattleSimObject teams)
+		public static String GetAnswer(BattleSimObject battleSimObject)
 		{
-			foreach (List<Wizard> wizard in teams)
+			do
 			{
-				Console.WriteLine(wizard);
+				Wizard firstWizardA = battleSimObject.TeamA.First();
+				Wizard firstWizardB = battleSimObject.TeamB.First();
+				if (firstWizardA.Speed > firstWizardB.Speed)
+				{
+					firstWizardB.Health -= firstWizardA.Strength;
+					if (firstWizardB.Health <= 0)
+					{
+						battleSimObject.TeamB.RemoveAt(firstWizardB);
+					} else {
+						firstWizardA.Health -= firstWizardB.Strength;
+					}
+				} else {
+					firstWizardA.Health -= firstWizardB.Strength;
+					if (firstWizardA.Health <= 0)
+					{
+						battleSimObject.TeamA.Remove(firstWizardA);
+					} else {
+						firstWizardB.Health -= firstWizardA.Strength;
+					}
+				}
+			} while (battleSimObject.TeamA.Count != 0 && battleSimObject.TeamB.Count != 0 );
+			if (battleSimObject.TeamA.Any()) {
+				return(nameof(battleSimObject.TeamA));
+			} else {
+				return(nameof(battleSimObject.TeamB));
 			}
-			String answer = "";
-			return answer;
+			// var any = battleSimObject.TeamA.Any(wizard => wizard.Health > 10);
+
+			// battleSimObject.TeamA.Remove(firstWizardA);
 		}
 		static async Task getEverything()
 		{
@@ -51,39 +76,39 @@ namespace HocusCodusA2
 			// We doen de GET request en wachten op de het antwoord
 			// De response die we verwachten is een lijst van Strings dus gebruiken we List<String>
 			var sampleGetResponse = await client.GetFromJsonAsync<BattleSimObject>(sampleUrl);
-			Console.WriteLine(sampleGetResponse);
+
 			var sampleAnswer = GetAnswer(sampleGetResponse);
 
 			// // We sturen het antwoord met een POST request
 			// // Het antwoord dat we moeten versturen is een getal dus gebruiken we int
 			// // De response die we krijgen zal ons zeggen of ons antwoord juist was
-			// var samplePostResponse = await client.PostAsJsonAsync<Object>(sampleUrl, sampleAnswer);
+			var samplePostResponse = await client.PostAsJsonAsync<string>(sampleUrl, sampleAnswer);
 
 			// // Om te zien of ons antwoord juist was moeten we de response uitlezen
 			// // Een 200 status code betekent dus niet dat je antwoord juist was!
-			// var samplePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
+			var samplePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
 
-			// Console.WriteLine(samplePostResponseValue);
+			Console.WriteLine(samplePostResponseValue);
 
 			// // De url om de puzzle challenge data op te halen
-			// var puzzleUrl = "api/path/1/medium/Puzzle";
+			var puzzleUrl = "api/path/1/medium/Puzzle";
 			// // We doen de GET request en wachten op de het antwoord
 			// // De response die we verwachten is een lijst van strings dus gebruiken we List<String>
-			// var puzzleGetResponse = await client.GetFromJsonAsync<List<String>>(puzzleUrl);
+			var puzzleGetResponse = await client.GetFromJsonAsync<BattleSimObject>(puzzleUrl);
 			// Console.WriteLine(puzzleGetResponse);
 			// // Je zoekt het antwoord
-			// var puzzleAnswer = GetAnswer(puzzleGetResponse);
+			var puzzleAnswer = GetAnswer(puzzleGetResponse);
 
 			// // We sturen het antwoord met een POST request
 			// // Het antwoord dat we moeten versturen is een getal dus gebruiken we int
 			// // De response die we krijgen zal ons zeggen of ons antwoord juist was
-			// var puzzlePostResponse = await client.PostAsJsonAsync<String>(puzzleUrl, puzzleAnswer);
+			var puzzlePostResponse = await client.PostAsJsonAsync<string>(puzzleUrl, puzzleAnswer);
 
 			// // Om te zien of ons antwoord juist was moeten we de response uitlezen
 			// // Een 200 status code betekent dus niet dat je antwoord juist was!
-			// var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
+			var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
 
-			// Console.WriteLine(puzzlePostResponseValue);
+			Console.WriteLine(puzzlePostResponseValue);
 		}
 	}
 }
