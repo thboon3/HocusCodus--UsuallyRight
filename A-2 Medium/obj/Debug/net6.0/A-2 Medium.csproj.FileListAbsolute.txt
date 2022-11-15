@@ -1,0 +1,15 @@
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/bin/Debug/net6.0/A-2 Medium
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/bin/Debug/net6.0/A-2 Medium.deps.json
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/bin/Debug/net6.0/A-2 Medium.runtimeconfig.json
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/bin/Debug/net6.0/A-2 Medium.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/bin/Debug/net6.0/ref/A-2 Medium.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/bin/Debug/net6.0/A-2 Medium.pdb
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.csproj.AssemblyReference.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.GeneratedMSBuildEditorConfig.editorconfig
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.AssemblyInfoInputs.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.AssemblyInfo.cs
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.csproj.CoreCompileInputs.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/ref/A-2 Medium.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.pdb
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/A-2 Medium/obj/Debug/net6.0/A-2 Medium.genruntimeconfig.cache
