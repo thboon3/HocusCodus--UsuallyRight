@@ -2,7 +2,7 @@
 using System.Net.Http.Json;
 
 
-namespace HocusCodus
+namespace HocusCodusA1
 {
 	internal class Program
 	{
