@@ -6,9 +6,12 @@ namespace HocusCodus // Note: actual namespace depends on the project name.
 {
 	internal class Program
 	{
-		static async void Main(string[] args)
+		static void Main(string[] args)
 		{
+			getResponse();
+		}
 
+		static async void getResponse() {
 			// Swagger
 			// https://app-htf-2022.azurewebsites.net/swagger/index.html
 			// De httpclient die we gebruiken om http calls te maken
@@ -18,7 +21,7 @@ namespace HocusCodus // Note: actual namespace depends on the project name.
 			client.BaseAddress = new Uri("https://app-htf-2022.azurewebsites.net");
 
 			// De token die je gebruikt om je team te authenticeren, deze kan je via de swagger ophalen met je teamname + password
-			var token = "token";
+			var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiOSIsIm5iZiI6MTY2ODUwMzc1MSwiZXhwIjoxNjY4NTkwMTUxLCJpYXQiOjE2Njg1MDM3NTF9.u_Vw7P1JL9cUX_h3LxVUFZLIt4h3IOQOcZFWksMK0En_OXUaRHmvatBUw78B5itcCWQmwy-ngk6Pu5IY6VJ1Ug";
 
 			// We stellen de token in zodat die wordt meegestuurd bij alle calls, anders krijgen we een 401 Unauthorized response op onze calls
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -33,13 +36,13 @@ namespace HocusCodus // Note: actual namespace depends on the project name.
 			var startResponse = await client.GetAsync(startUrl);
 
 			// De url om de sample challenge data op te halen
-			var sampleUrl = "api/path/1/easy/Sample";
+			var sampleUrl = "api/path/1/easy/Puzzle";
 
 			// We doen de GET request en wachten op de het antwoord
 			// De response die we verwachten is een lijst van getallen dus gebruiken we List<int>
 			var sampleGetResponse = await client.GetFromJsonAsync<List<int>>(sampleUrl);
 
-			
+			Console.WriteLine(sampleGetResponse);
 		}
 	}
 }

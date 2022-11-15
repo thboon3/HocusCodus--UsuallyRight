@@ -1,0 +1,15 @@
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.csproj.AssemblyReference.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.GeneratedMSBuildEditorConfig.editorconfig
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.AssemblyInfoInputs.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.AssemblyInfo.cs
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.csproj.CoreCompileInputs.cache
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/bin/Debug/net6.0/code
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/bin/Debug/net6.0/code.deps.json
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/bin/Debug/net6.0/code.runtimeconfig.json
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/bin/Debug/net6.0/code.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/bin/Debug/net6.0/ref/code.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/bin/Debug/net6.0/code.pdb
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/ref/code.dll
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.pdb
+/home/lucasmiserez/Documents/GitHub/HocusCodus--UsuallyRight/code/obj/Debug/net6.0/code.genruntimeconfig.cache
