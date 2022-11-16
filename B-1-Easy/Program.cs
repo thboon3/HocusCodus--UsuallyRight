@@ -13,33 +13,32 @@ namespace HocusCodusB1
 
 		public static String GetAnswer(List<string> test)
 		{
-			Dictionary<string, int> openWith =  new Dictionary<string, int>();
-			List<String> nietEinde = new List<string>();
-			List<String> e = new List<string>();
+			List<char> test2 = new List<char>();		
+			string answer = "";
 
-			foreach (string woord in test)
+			foreach (string s in test)
 			{
-				string s = "";
-				nietEinde.RemoveAll();
-				foreach (char ch in woord)
+				test2.Clear();
+				for (int i = 1; i <= s.Distinct().Count(); i++)
 				{
-					if (!nietEinde.ContainsKey(ch.ToString()))
+					foreach (char c in s)
 					{
-						nietEinde.Insert((woord.Count(x => x == ch.ToString()) - 1, ch));
+						if ((s.Count(x => x == c)) == i)
+						{
+							if (!test2.Contains(c))
+							{
+								test2.Add(c);
+							}
+						}
 					}
 				}
-				foreach (char ch in nietEinde)
+				foreach (char c in test2)
 				{
-					s += ch;
+					answer += c.ToString();
 				}
-				einde.Append(s);
-			}
-			foreach (string s in Einde)
-			{
-				Console.WriteLine(s);
-			}
-			string answer = "";
-			return answer;
+				answer += " ";
+			}	
+			return answer.TrimEnd();
 		}
 		static async Task getEverything()
 		{
@@ -52,7 +51,7 @@ namespace HocusCodusB1
 			client.BaseAddress = new Uri("https://app-htf-2022.azurewebsites.net");
 
 			// De token die je gebruikt om je team te authenticeren, deze kan je via de swagger ophalen met je teamname + password
-			var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiOSIsIm5iZiI6MTY2ODUwMzc1MSwiZXhwIjoxNjY4NTkwMTUxLCJpYXQiOjE2Njg1MDM3NTF9.u_Vw7P1JL9cUX_h3LxVUFZLIt4h3IOQOcZFWksMK0En_OXUaRHmvatBUw78B5itcCWQmwy-ngk6Pu5IY6VJ1Ug";
+			var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiOSIsIm5iZiI6MTY2ODU5OTI0MCwiZXhwIjoxNjY4Njg1NjQwLCJpYXQiOjE2Njg1OTkyNDB9.axNkaFhLt6GFWtLvrLsmJ_Qo2GalaBl-6w_tpuGUTNqJq8z18tpSpTBMosMskMjrb4xiCagudx4stFXVXUXU-w";
 
 			// We stellen de token in zodat die wordt meegestuurd bij alle calls, anders krijgen we een 401 Unauthorized response op onze calls
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -73,8 +72,6 @@ namespace HocusCodusB1
 			// De response die we verwachten is een lijst van Strings dus gebruiken we List<String>
 			var sampleGetResponse = await client.GetFromJsonAsync<List<string>>(sampleUrl);
 
-			Console.WriteLine(sampleGetResponse);
-
 
 			var sampleAnswer = GetAnswer(sampleGetResponse);
 
@@ -87,26 +84,27 @@ namespace HocusCodusB1
 			// Een 200 status code betekent dus niet dat je antwoord juist was!
 			var samplePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
 
+			Console.WriteLine(samplePostResponseValue);
 
 			// // De url om de puzzle challenge data op te halen
-			// var puzzleUrl = "api/path/2/easy/Puzzle";
+			var puzzleUrl = "api/path/2/easy/Puzzle";
 			// // We doen de GET request en wachten op de het antwoord
 			// // De response die we verwachten is een lijst van strings dus gebruiken we List<String>
-			// var puzzleGetResponse = await client.GetFromJsonAsync<List<String>>(puzzleUrl);
+			var puzzleGetResponse = await client.GetFromJsonAsync<List<String>>(puzzleUrl);
 			// Console.WriteLine(puzzleGetResponse);
 			// // Je zoekt het antwoord
-			// var puzzleAnswer = GetAnswer(puzzleGetResponse);
+			var puzzleAnswer = GetAnswer(puzzleGetResponse);
 
 			// // We sturen het antwoord met een POST request
 			// // Het antwoord dat we moeten versturen is een getal dus gebruiken we int
 			// // De response die we krijgen zal ons zeggen of ons antwoord juist was
-			// var puzzlePostResponse = await client.PostAsJsonAsync<String>(puzzleUrl, puzzleAnswer);
+			var puzzlePostResponse = await client.PostAsJsonAsync<String>(puzzleUrl, puzzleAnswer);
 
 			// // Om te zien of ons antwoord juist was moeten we de response uitlezen
 			// // Een 200 status code betekent dus niet dat je antwoord juist was!
-			// var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
+			var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
 
-			// Console.WriteLine(puzzlePostResponseValue);
+			Console.WriteLine(puzzlePostResponseValue);
 		}
 	}
 }

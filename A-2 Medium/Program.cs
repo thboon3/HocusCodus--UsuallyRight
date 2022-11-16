@@ -68,7 +68,7 @@ namespace HocusCodusA2
 			client.BaseAddress = new Uri("https://app-htf-2022.azurewebsites.net");
 
 			// De token die je gebruikt om je team te authenticeren, deze kan je via de swagger ophalen met je teamname + password
-			var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiOSIsIm5iZiI6MTY2ODUwMzc1MSwiZXhwIjoxNjY4NTkwMTUxLCJpYXQiOjE2Njg1MDM3NTF9.u_Vw7P1JL9cUX_h3LxVUFZLIt4h3IOQOcZFWksMK0En_OXUaRHmvatBUw78B5itcCWQmwy-ngk6Pu5IY6VJ1Ug";
+			var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiOSIsIm5iZiI6MTY2ODU5OTI0MCwiZXhwIjoxNjY4Njg1NjQwLCJpYXQiOjE2Njg1OTkyNDB9.axNkaFhLt6GFWtLvrLsmJ_Qo2GalaBl-6w_tpuGUTNqJq8z18tpSpTBMosMskMjrb4xiCagudx4stFXVXUXU-w";
 
 			// We stellen de token in zodat die wordt meegestuurd bij alle calls, anders krijgen we een 401 Unauthorized response op onze calls
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
